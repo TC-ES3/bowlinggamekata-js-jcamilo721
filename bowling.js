@@ -11,24 +11,33 @@ export default class Game {
     let frameIndex = 0;
     for (let frame = 0; frame < 10; frame++) {
       if (rolls[frameIndex] == 10) {
-        // strike
-        score +=
-          10 +
-          rolls[frameIndex + 1] +
-          rolls[frameIndex + 2];
+        score += 10 + strikeBonus(rolls, frameIndex);
         frameIndex += 1;
       } else if (isSpare(rolls, frameIndex)) {
-        // spare
-        score += 10 + rolls[frameIndex + 2];
+        let spare = spareBonus(rolls, frameIndex);
+        score += 10 + spare;
         frameIndex += 2;
       } else {
-        score += rolls[frameIndex] + rolls[frameIndex + 1];
+        score = sumOfBallsInFrame(score, rolls, frameIndex);
         frameIndex += 2;
       }
     }
     return score;
   }
 }
+function spareBonus(rolls, frameIndex) {
+  return rolls[frameIndex + 2];
+}
+
+function sumOfBallsInFrame(score, rolls, frameIndex) {
+  score += rolls[frameIndex] + rolls[frameIndex + 1];
+  return score;
+}
+
 function isSpare(rolls, frameIndex) {
   return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
+}
+
+function strikeBonus(rolls, frameIndex) {
+  return rolls[frameIndex + 1] + rolls[frameIndex + 2];
 }
