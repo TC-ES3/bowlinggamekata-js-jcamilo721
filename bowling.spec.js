@@ -24,11 +24,11 @@ test("all ones", () => {
   expect(g.score()).toBe(20);
 });
 
-// test("one spare", () => {
-//   g.roll(5);
-//   g.roll(5); // spare
-//   g.roll(3);
+test("one spare", () => {
+  g.roll(5);
+  g.roll(5); // spare
+  g.roll(3);
 
-//   rollMany(17, 0);
-//   expect(g.score()).toBe(16);
-// });
+  rollMany(17, 0);
+  expect(g.score()).toBe(16);
+});

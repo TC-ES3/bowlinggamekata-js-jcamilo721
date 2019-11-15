@@ -8,15 +8,15 @@ export default class Game {
   score() {
     const rolls = this._rolls;
     let score = 0;
-    let i = 0;
+    let frameIndex = 0;
     for (let frame = 0; frame < 10; frame++) {
-      if (rolls[i] + rolls[i + 1] == 10) {
+      if (rolls[frameIndex] + rolls[frameIndex + 1] == 10) {
         // spare
-        score += 10 + rolls[i] + rolls[i + 1];
+        score += 10 + rolls[frameIndex + 2];
       } else {
-        score += rolls[i] + rolls[i + 1];
+        score += rolls[frameIndex] + rolls[frameIndex + 1];
       }
-      i += 2;
+      frameIndex += 2;
     }
     return score;
   }
