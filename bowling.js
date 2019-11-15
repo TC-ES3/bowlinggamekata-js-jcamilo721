@@ -10,7 +10,7 @@ export default class Game {
     let score = 0;
     let frameIndex = 0;
     for (let frame = 0; frame < 10; frame++) {
-      if (rolls[frameIndex] + rolls[frameIndex + 1] == 10) {
+      if (isSpare(rolls, frameIndex)) {
         // spare
         score += 10 + rolls[frameIndex + 2];
       } else {
@@ -20,4 +20,7 @@ export default class Game {
     }
     return score;
   }
+}
+function isSpare(rolls, frameIndex) {
+  return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
 }
