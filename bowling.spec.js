@@ -38,7 +38,7 @@ test("one spare", () => {
 });
 
 test("one strike", () => {
-  g.roll(10);
+  g.roll(10); // strike
   g.roll(3);
   g.roll(4);
 
